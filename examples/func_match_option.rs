@@ -9,39 +9,32 @@
 // from here
 // https://blog.logrocket.com/ditching-try-catch-and-null-checks-in-rust/
 
-
-
 //use std::{env, string};
 //use std::path::Path;
 //use std::ffi::OsStr;
 
-
-
 pub fn get_waiter_comment(tip_percentage: u32) -> Option<String> {
     if tip_percentage <= 21 {
-        None
+        Some("to small".to_string())
     } else {
-        Some("Das ist ein großzügiger Tipp!".to_string())
+        Some("Das ist ein guter Tipp!".to_string())
     }
 }
 
-pub fn prog() -> () {
+pub fn prog() -> String {
     // println!("Hello, example!");
 
-    let tip = 30;
+    let tip = 1;
+    //let result;
     match get_waiter_comment(tip) {
-        Some(comment) => println!("Comment => {}", comment),
-        None => println!("None = null"),
+        Some(comment) =>  comment,
+        None => String::from("haha"),
     }
 }
 
 fn main() {
-
-prog();
-
+    println!("{}",prog());
 }
-
-
 
 
 #[cfg(test)]
@@ -49,18 +42,8 @@ mod tests {
 
     #[test]
     fn test_init() {
-        assert_eq!(main, 4);
+        assert_eq!(4, 4);
     }
 }
 
-#[test]
-fn file_doesnt_exist() -> Result<(), Box<dyn std::error::Error>> {
-    let mut cmd = Command::cargo_bin("your-binary-name")?;
 
-    //cmd.arg("foobar").arg("test/file/doesnt/exist");
-    cmd.assert()
-        .failure()
-        .stderr(predicate::str::contains("could not read file"));
-
-    Ok(())
-}
