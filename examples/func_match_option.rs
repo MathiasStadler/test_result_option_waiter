@@ -22,20 +22,17 @@ pub fn get_waiter_comment(tip_percentage: u32) -> Option<String> {
 }
 
 pub fn prog() -> String {
-    // println!("Hello, example!");
-
-    let tip = 1;
+    let tip: u32 = 1;
     //let result;
     match get_waiter_comment(tip) {
-        Some(comment) =>  comment,
+        Some(comment) => comment,
         None => String::from("haha"),
     }
 }
 
 fn main() {
-    println!("{}",prog());
+    println!("{}", prog());
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -45,5 +42,3 @@ mod tests {
         assert_eq!(4, 4);
     }
 }
-
-
